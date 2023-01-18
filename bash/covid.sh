@@ -1,14 +1,15 @@
 #! /bin/bash
 #This script downloads covid data and displays it
-
+#Setting Data Variable
+DATA=$(curl https://api.covidtracking.com/v1/us/current.json)
 #Setting Positive Case Variable
-POSITIVE=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].positive')
+POSITIVE=$(echo $DATA | jq '.[0].positive')
 #Setting Negative Case Variable
-NEGATIVE=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].negative')
+NEGATIVE=$(echo $DATA  | jq '.[0].negative')
 #Setting Death Case Variable
-DEATH=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].death')
+DEATH=$(echo $DATA | jq '.[0].death')
 #Setting Hospitalized Variable
-HOSPITAL=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].hospitalized')
+HOSPITAL=$(echo $DATA | jq '.[0].hospitalized')
 #Setting Todays date as a Variable
 TODAY=$(date)
 
