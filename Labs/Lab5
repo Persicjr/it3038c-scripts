@@ -1,0 +1,11 @@
+# Prompting user for birthday
+date_str = input("Enter your date of birth (in YYYY-MM-DD format): ")
+
+#Conversion
+dob = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+
+#Calculation
+age_seconds = (datetime.datetime.now() - dob).total_seconds()
+
+#Print
+print("You are approximately", int(age_seconds), "seconds old! Wow!")
