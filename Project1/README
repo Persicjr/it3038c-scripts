@@ -1,0 +1,18 @@
+PowerShell script to tell the current time
+This script uses PowerShell to retrieve the current time and display it in the console window.
+
+Usage
+To use this script, follow these steps:
+
+Open PowerShell by searching for "PowerShell" in the Windows Start Menu or by pressing the Windows key + R and typing "powershell" in the Run dialog box.
+
+Copy and paste the script code into the PowerShell console.
+
+Press Enter to execute the script.
+
+The current time will be displayed in the console window.
+
+Press Enter to exit the console window.
+
+Requirements
+This script requires Windows PowerShell to be installed on your computer. It should work on any version of Windows that includes PowerShell.
