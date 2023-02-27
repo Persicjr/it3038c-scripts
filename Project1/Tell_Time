@@ -1,0 +1,8 @@
+#This is a variable to tell the computer to actually pull the date and place it in the variable currentTime
+$currentTime = Get-Date
+
+#This will output the date that is stored in Hour/Minute/Seconds structure
+Write-Host "The current time is: " $currentTime.ToString("hh:mm:ss tt")
+
+#This is so that the script will not close without the user seing the time
+Read-Host "Press Enter to exit"
