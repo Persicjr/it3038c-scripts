@@ -1,5 +1,3 @@
-READ ME
-
 PowerShell script to ping a single or multiple computers
 This script uses PowerShell to prompt a user to list out a single or multiple computers to be pinged while keeping an active list of 
 those which are able to be pinged, and those that are not. It also list all of the relevant infomration like how long it took to ping.
