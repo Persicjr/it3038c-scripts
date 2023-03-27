@@ -1,0 +1,23 @@
+READ ME
+
+PowerShell script to ping a single or multiple computers
+This script uses PowerShell to prompt a user to list out a single or multiple computers to be pinged while keeping an active list of 
+those which are able to be pinged, and those that are not. It also list all of the relevant infomration like how long it took to ping.
+
+Usage
+To use this script, follow these steps:
+
+Open PowerShell by searching for "PowerShell" in the Windows Start Menu or by pressing the Windows key + R and typing "powershell" in the Run dialog box.
+
+Copy and paste the script code into the PowerShell console.
+
+Press Enter to execute the script.
+
+Enter all the computers you'd like to ping (You can also use IP-Addresses) seperated by a comma for multiple computers.
+
+All of the computers and relevant information will be listed.
+
+Press Enter to exit the console window.
+
+Requirements
+This script requires Windows PowerShell to be installed on your computer. It should work on any version of Windows that includes PowerShell.
