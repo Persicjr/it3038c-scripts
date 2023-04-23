@@ -1,13 +1,16 @@
 Ping and Tracert Script
+
 This script is designed to ping a list of devices and perform a tracert on each device to determine the number of routers each device hits. 
 It will then sort the devices from fastest to slowest response times. This is a good script for troubleshooting connections of devices on your network
 and seeing if the proper channels are being reached when reaching out to the internet. It also works with DNS site names (Ex."www.google.com") 
 
 Requirements
+
 This script requires PowerShell version 3.0 or later to be installed on the computer running the script. 
 It also requires that the user has administrative access to run the Test-Connection and tracert commands.
 
 Usage
+
 To use the script, follow these steps:
 
 Open a PowerShell terminal.
