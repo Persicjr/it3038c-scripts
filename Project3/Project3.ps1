@@ -1,17 +1,17 @@
-#Prompt the user to choose between CSV file and manual input
+#Prompt user to choose between CSV file and manual input
 $inputMethod = Read-Host -Prompt "Enter 'CSV' to input devices from a CSV file, or 'Manual' to input device names manually"
 
-if ($inputMethod -eq "CSV") {
-	#Prompt the user to enter the file path
+if ($inputMethod = "CSV") {
+	#Prompt user to enter the file path
 	Write-Host
 	Write-Host "Be sure to add 'DeviceName' in the first cell of your CSV file"
 	$filePath = Read-Host -Prompt "Enter the path of the CSV file"
     
-	#Read the CSV file and extract the device names
+	#Reading path and CSV file under column with DeviceName
 	$devices = Get-Content $filePath | ConvertFrom-Csv | Select-Object -ExpandProperty DeviceName
 }
-elseif ($inputMethod -eq "Manual") {
-	#Prompt the user to enter the device names
+elseif ($inputMethod = "Manual") {
+	#Prompt user to enter the device names
 	Write-Host
 	$devices = Read-Host -Prompt "Enter device names separated by commas"
 	$devices = $devices.Split(",")
@@ -30,49 +30,49 @@ $unreachableCount = 0
 #Initialize an empty array to store ping times and tracert results
 $results = @()
 
-#Loop through the array and ping and tracert each device
+#Loop through array and ping and tracert each device
 foreach ($device in $devices) {
 	$start = Get-Date
 	$ping = Test-Connection -ComputerName $device -Count 1 -Quiet
 	$end = Get-Date
 	$pingTime = New-TimeSpan $start $end
 	$result = [PSCustomObject] @{
-		DeviceName = $device
-		IsReachable = $ping
+		DeviceName   = $device
+		IsReachable  = $ping
 		ResponseTime = $pingTime.Milliseconds
-		Tracert = if ($ping) { tracert -hops 30 $device | Out-String } else { "" }
+		Tracert      = if ($ping) { tracert -hops 30 $device | Out-String } else { "" }
 	}
 	$results += $result
 	if ($ping) {
 		Write-Host "$device is reachable. Response time: $($pingTime.Milliseconds)ms"
 		$reachableCount++
-	} 
-  else {
+	}
+ else {
 		Write-Host "$device is not reachable"
 		$unreachableCount++
 	}
 }
 
-#Sort the results by response time and output the sorted list
+#Sort results by response time and output the sorted list
 $sortedResults = $results | Sort-Object ResponseTime
 
 Write-Host
 Write-Host "Reachable devices:"
-$sortedResults | Where-Object IsReachable -eq $true | Select-Object DeviceName, ResponseTime, @{Name="Tracert";Expression={$_.Tracert.Trim()}} | Format-Table -AutoSize
+$sortedResults | Where-Object IsReachable -eq $true | Select-Object DeviceName, ResponseTime, @{Name = "Tracert"; Expression = { $_.Tracert.Trim() } } | Format-Table -AutoSize
 Write-Host "Total reachable devices: $reachableCount"
 Write-Host "Total unreachable devices: $unreachableCount"
 
-#Output the total count of reachable and unreachable devices
+#Output total count of reachable and unreachable devices
 $sortedResults | Group-Object IsReachable | ForEach-Object {
-  Write-Host
+	Write-Host
 	if ($_.Name -eq $true) {
-	  Write-Host "Total reachable devices: $($_.Count)"
-	} 
-  else {
-	  Write-Host "Total unreachable devices: $($_.Count)"
+		Write-Host "Total reachable devices: $($_.Count)"
+	}
+ else {
+		Write-Host "Total unreachable devices: $($_.Count)"
 	}
 }
-#Output the full results in a grid view
+#Output full results in a grid view
 $sortedResults | Out-GridView
 
 #End script but only after user clicks enter.
