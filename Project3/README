@@ -11,7 +11,7 @@ To use the script, follow these steps:
 
 Open a PowerShell terminal.
 Navigate to the directory where the script is saved.
-Run the script by typing .\ping-tracert-script.ps1.
+Run the script by typing .\project3.ps1.
 Follow the prompts to enter the list of devices either through a CSV file or by manual input.
 The script will output the ping and tracert results for each device, and then display a summary of the total reachable and unreachable devices, 
 as well as the response times for each device in ascending order.
